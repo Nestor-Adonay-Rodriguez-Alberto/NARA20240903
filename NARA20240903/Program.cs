@@ -70,3 +70,28 @@ app.MapPut("/Producto/{id}", (int id, Producto producto) =>
     }
 });
 
+
+// DELETE : Obtiene un Objeto con ese ID Y Lo Elimina De La Lista:
+app.MapDelete("/Producto/{id}", (int id) =>
+{
+    //Buscamos:
+    Producto Objeto_Obtenido = Lista_Productos.FirstOrDefault(x => x.IdProducto == id);
+
+    if (Objeto_Obtenido != null)
+    {
+        //Eliminamos:
+        Lista_Productos.Remove(Objeto_Obtenido);
+
+        return Results.Ok();
+    }
+    else
+    {
+        return Results.NotFound();
+    }
+});
+
+
+// CORREMOS LA APLICACION
+app.Run();
+
+
