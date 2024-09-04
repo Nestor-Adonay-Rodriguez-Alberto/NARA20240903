@@ -20,4 +20,16 @@ app.UseHttpsRedirection();
 
 
 
+// Registros Guardados:
+List<Producto> Lista_Productos = new List<Producto>();
+
+
+// ******* Endponit De La API ********
+
+// GET : Obtener Todos Los Registros:
+app.MapGet("/Producto", () =>
+{
+    return Lista_Productos;
+});
+
 
