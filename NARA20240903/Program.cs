@@ -33,3 +33,9 @@ app.MapGet("/Producto", () =>
 });
 
 
+// GET : Obtener Un Registro Con Ese ID:
+app.MapGet("/Producto/{id}", (int id) =>
+{
+    Producto Objeto_Obtenido = Lista_Productos.FirstOrDefault(x => x.IdProducto == id);
+    return Objeto_Obtenido;
+});
