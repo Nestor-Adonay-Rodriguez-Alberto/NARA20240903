@@ -47,3 +47,26 @@ app.MapPost("/Producto", (Producto producto) =>
     Lista_Productos.Add(producto);
     return Results.Ok();
 });
+
+
+// PUT : Obtiene un Objeto con ese ID:
+app.MapPut("/Producto/{id}", (int id, Producto producto) =>
+{
+    //Buscamos:
+    Producto Objeto_Obtenido = Lista_Productos.FirstOrDefault(x => x.IdProducto == id);
+
+    if (Objeto_Obtenido != null)
+    {
+        //Actualizamos Datos:
+        Objeto_Obtenido.Nombre = producto.Nombre;
+        Objeto_Obtenido.Precio = producto.Precio;
+        Objeto_Obtenido.Marca = producto.Marca;
+
+        return Results.Ok();
+    }
+    else
+    {
+        return Results.NotFound();
+    }
+});
+
