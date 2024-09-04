@@ -39,3 +39,11 @@ app.MapGet("/Producto/{id}", (int id) =>
     Producto Objeto_Obtenido = Lista_Productos.FirstOrDefault(x => x.IdProducto == id);
     return Objeto_Obtenido;
 });
+
+
+// POST : Recibe Un Objeto Y Lo Guarda En La Lista:
+app.MapPost("/Producto", (Producto producto) =>
+{
+    Lista_Productos.Add(producto);
+    return Results.Ok();
+});
